@@ -23,6 +23,7 @@ export interface ExperiencesType {
 }
 
 export interface TestimonialsType {
+  index?: number;
   testimonial: string;
   name: string;
   designation: string;
@@ -36,6 +37,7 @@ export interface TagsType {
 }
 
 export interface ProjectsType {
+  index?: number;
   name: string;
   description: string;
   tags: TagsType[];

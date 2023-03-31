@@ -185,6 +185,7 @@ const testimonials: TestimonialsType[] = [
     designation: 'CFO',
     company: 'Acme Co',
     image: 'https://randomuser.me/api/portraits/women/4.jpg',
+    index: 0,
   },
   {
     testimonial:
@@ -193,6 +194,7 @@ const testimonials: TestimonialsType[] = [
     designation: 'COO',
     company: 'DEF Corp',
     image: 'https://randomuser.me/api/portraits/men/5.jpg',
+    index: 1,
   },
   {
     testimonial:
@@ -201,6 +203,7 @@ const testimonials: TestimonialsType[] = [
     designation: 'CTO',
     company: '456 Enterprises',
     image: 'https://randomuser.me/api/portraits/women/6.jpg',
+    index: 2,
   },
 ];
 

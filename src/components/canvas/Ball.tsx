@@ -1,4 +1,4 @@
-const Ball = () => {
+const Ball = ({ icon }: { icon: any}) => {
   return <div>Ball</div>;
 };
 
