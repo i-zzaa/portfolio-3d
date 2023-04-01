@@ -20,7 +20,7 @@ const Hero = () => {
           </h1>
           <p className={`${styles.heroSubText} mt-2 text-white-100`}>
             sou Fullstack NodeJs<br className='sm:block hidden' />
-            com foco em ux e ui - mobile e web
+            com foco em ux e ui  |  mobile e web
           </p>
         </div>
       </div>

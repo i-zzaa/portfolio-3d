@@ -4,6 +4,7 @@ export interface NavLinksType {
 }
 
 export interface ServicesType {
+  index?: number;
   title: string;
   icon: any;
 }
