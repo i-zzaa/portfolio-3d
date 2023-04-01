@@ -164,10 +164,10 @@ const experiences: ExperiencesType[] = [
   },
   {
     title: 'Full stack Developer',
-    company_name: 'Meta',
+    company_name: 'ANTTANTT',
     icon: meta,
     iconBg: '#E6DEDD',
-    date: 'Jan 2023 - Present',
+    date: 'fev de 2011 - jul de 2011fev de 2011 - jul de 2011',
     points: [
       'Developing and maintaining web applications using React.js and other related technologies.',
       'Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.',

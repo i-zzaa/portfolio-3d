@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import React, { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import {
   Decal,
@@ -10,11 +10,11 @@ import {
 
 import CanvasLoader from "../Loader";
 
-const Ball = ({ imgUrl }: { imgUrl: string}) => {
-  const [decal] = useTexture([imgUrl]);
+const Ball = (props: { imgUrl: string }) => {
+  const [decal] = useTexture([props.imgUrl]);
 
   return (
-    <Float speed={1.75} rotationIntensity={1} floatIntensity={2} floatingRange={[1, 10]} >
+    <Float speed={1.75} rotationIntensity={1} floatIntensity={2}>
       <ambientLight intensity={0.25} />
       <directionalLight position={[0, 0, 0.05]} />
       <mesh castShadow receiveShadow scale={2.75}>
