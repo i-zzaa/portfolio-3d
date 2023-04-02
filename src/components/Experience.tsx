@@ -8,9 +8,12 @@ import { styles } from '../styles';
 import { SectionWrapper } from '../hoc';
 import { textVariant } from '../util/motion';
 import { ExperiencesType } from '../types/contants';
-import { useEffect, useMemo, useState } from 'react';
-import { collection, getDocs } from "firebase/firestore";
-import { db, firebaseapp } from '../firebase';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+
+import { getDocs, collection } from 'firebase/firestore';
+import {useFirebaseContext} from '../context/firebase';
+import { formatDateMonthYear } from '../util/date';
+
 
 const ExperienceCard = ({ experience }: { experience: ExperiencesType }) => {
   return (
@@ -54,27 +57,32 @@ const ExperienceCard = ({ experience }: { experience: ExperiencesType }) => {
 };
 
 const Experience = () => {
-
-
+  const { db } = useFirebaseContext()
   const [experiences, setexperiences] = useState([] as ExperiencesType[] )
-  
 
-  const getCollection = useMemo(async() => {
-    try {
-      const querySnapshot = await getDocs(collection(db, "experiences"));
-    querySnapshot.forEach((doc) => {
-      console.log(`${doc.id} => ${doc.data()}`);
+  const getDate = useCallback( async() => {
+    const querySnapshot = await getDocs(collection(db, "experiences"));
+    const docs: ExperiencesType[]= []
+    querySnapshot.forEach((doc: any) => {
+      docs.push({
+        company_name: doc.data().company_name ,
+        date: `${formatDateMonthYear(doc.data().dateInit)} - ${formatDateMonthYear(doc.data().dateFinish)}` , 
+        dateInit: doc.data().dateInit , 
+        icon: doc.data().icon , 
+        iconBg: doc.data().iconBg , 
+        points: doc.data().points , 
+        title: doc.data().title 
+      })
     });
-    } catch (error) {
-      console.error(error);
-      setexperiences([])
-      
-    }
+
+    setexperiences(docs)
   }, [])
-  
-  useEffect(() => {
-    getCollection
-  }, [])
+
+
+  useEffect(()=> {
+    getDate()
+  })
+
  
 
   return (
@@ -95,4 +103,4 @@ const Experience = () => {
   );
 };
 
-export default SectionWrapper(Experience, 'work');
+export default SectionWrapper(Experience, 'experience')

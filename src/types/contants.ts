@@ -19,7 +19,9 @@ export interface ExperiencesType {
   company_name: string;
   icon: string;
   iconBg: string;
-  date: string;
+  dateInit?: string;
+  dateFinish?: string;
+  date?: string;
   points: string[];
 }
 
