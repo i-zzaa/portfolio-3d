@@ -9,7 +9,7 @@ import { textVariant } from '../util/motion';
 import { ExperiencesType } from '../types/contants';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
-import { getDocs, collection } from 'firebase/firestore';
+import { getDocs, collection, orderBy } from 'firebase/firestore';
 import {useFirebaseContext} from '../context/firebase';
 import { formatDateMonthYear } from '../util/date';
 import { ref, getDownloadURL } from "firebase/storage";
@@ -60,9 +60,10 @@ const Experience = () => {
   const { db, storage  } = useFirebaseContext()
   const [experiences, setexperiences] = useState([] as ExperiencesType[] )
 
-  const getDate = useMemo( async() => {
+  const getDate = useCallback( async() => {
     const querySnapshot = await getDocs(collection(db, "experiences"));
     const docs: ExperiencesType[]= []
+
     querySnapshot.forEach((doc: any) => {
       const imageRef = ref(storage, doc.data().icon);
       getDownloadURL(imageRef).then((url: string) => {
@@ -85,8 +86,8 @@ const Experience = () => {
   }, [])
 
   useEffect(()=> {
-    getDate
-  })
+    getDate()
+  }, [])
 
   return (
     <>
@@ -106,4 +107,4 @@ const Experience = () => {
   );
 };
 
-export default SectionWrapper(Experience, 'experience')
+export default SectionWrapper(Experience, 'experiences')

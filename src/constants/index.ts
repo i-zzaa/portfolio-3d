@@ -33,15 +33,15 @@ import {
 const navLinks: NavLinksType[] = [
   {
     id: 'about',
-    title: 'About',
+    title: 'Sobre',
+  },
+  {
+    id: 'experiences',
+    title: 'Experiências',
   },
   {
     id: 'work',
-    title: 'Work',
-  },
-  {
-    id: 'contact',
-    title: 'Contact',
+    title: 'Projetos',
   },
 ];
 
