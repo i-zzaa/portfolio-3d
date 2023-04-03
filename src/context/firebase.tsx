@@ -1,9 +1,12 @@
 import { createContext, useContext } from 'react';
-import { getFirestore } from 'firebase/firestore';
+import { getFirestore, Firestore } from 'firebase/firestore';
+import { getStorage, FirebaseStorage } from 'firebase/storage';
 import { initializeApp } from 'firebase/app';
 
 interface FirebaseContextType {
-  db?: any;
+  db: Firestore;
+  storage: FirebaseStorage
+  app: any
 }
 
 const app = initializeApp({
@@ -16,10 +19,10 @@ const app = initializeApp({
   measurementId: 'G-B3HXLVJV92',
 });
 
-const FirebaseContext = createContext<FirebaseContextType>({  });
+const FirebaseContext = createContext<FirebaseContextType>({ db: getFirestore(app), storage: getStorage(app), app: app });
 
 const FirebaseContextProvider = ({ children }: any) => {
-  return <FirebaseContext.Provider value={{ db: getFirestore(app) }}>{children} </FirebaseContext.Provider>;
+  return <FirebaseContext.Provider value={{ db: getFirestore(app), storage: getStorage(app), app: app  }}>{children} </FirebaseContext.Provider>;
 };
 
 // Create a consumer hook
