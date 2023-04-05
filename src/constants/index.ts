@@ -20,6 +20,9 @@ import {
   tripguide,
   storybook,
   threejs,
+  heronlist,
+  esport,
+  tropheus,
 } from '../assets';
 import {
   ExperiencesType,
@@ -155,34 +158,49 @@ const testimonials: TestimonialsType[] = [
 
 const projects: ProjectsType[] = [
   {
-    name: 'Car Rent',
+    name: 'Heron List ',
     description:
-      'Web-based platform that allows users to search, book, and manage car rentals from various providers, providing a convenient and efficient solution for transportation needs.',
+      'Webservice de agendamento, fila, faturamento e gerenciamento de pacientes para Clínica Multialcance.',
     tags: [
       {
         name: 'react',
         color: 'blue-text-gradient',
       },
       {
-        name: 'mongodb',
+        name: 'mysql',
+        color: 'green-text-gradient',
+      },
+      {
+        name: 'nodejs',
         color: 'green-text-gradient',
       },
       {
         name: 'tailwind',
         color: 'pink-text-gradient',
       },
+      {
+        name: 'storybook',
+        color: 'pink-text-gradient',
+      },
     ],
-    image: carrent,
-    source_code_link: 'https://github.com/',
+    image: heronlist,
+    source_code_link: 'https://github.com/i-zzaa/heron-list-web',
   },
   {
-    name: 'Job IT',
-    description:
-      'Web application that enables users to search for job openings, view estimated salary ranges for positions, and locate available jobs based on their current location.',
+    name: 'eSpot',
+    description: 'Sistema de match para jogos online. Curso da rocketseat.',
     tags: [
       {
         name: 'react',
         color: 'blue-text-gradient',
+      },
+      {
+        name: 'react-native',
+        color: 'blue-text-gradient',
+      },
+      {
+        name: 'vite',
+        color: 'green-text-gradient',
       },
       {
         name: 'restapi',
@@ -192,31 +210,38 @@ const projects: ProjectsType[] = [
         name: 'scss',
         color: 'pink-text-gradient',
       },
-    ],
-    image: jobit,
-    source_code_link: 'https://github.com/',
-  },
-  {
-    name: 'Trip Guide',
-    description:
-      'A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.',
-    tags: [
       {
-        name: 'nextjs',
-        color: 'blue-text-gradient',
-      },
-      {
-        name: 'supabase',
-        color: 'green-text-gradient',
-      },
-      {
-        name: 'css',
+        name: 'nodejs',
         color: 'pink-text-gradient',
       },
     ],
-    image: tripguide,
-    source_code_link: 'https://github.com/',
+    image: esport,
+    source_code_link: 'https://github.com/i-zzaa/eSport',
+  },
+  {
+    name: 'Tropheus',
+    description: 'Sistema ',
+    tags: [
+      {
+        name: 'Jest',
+        color: 'blue-text-gradient',
+      },
+      {
+        name: 'vue2',
+        color: 'green-text-gradient',
+      },
+      {
+        name: 'Bootstrap',
+        color: 'pink-text-gradient',
+      },
+      {
+        name: 'Travis CI',
+        color: 'pink-text-gradient',
+      },
+    ],
+    image: tropheus,
+    source_code_link: 'https://github.com/isa-desenvolvimento/trophy-front',
   },
 ];
 
-export { navLinks, services, technologies, experiences, testimonials, projects };
+export { navLinks, services, technologies, testimonials, projects };

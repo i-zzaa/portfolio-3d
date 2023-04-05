@@ -22,6 +22,9 @@ import typescript from './tech/typescript.png';
 import threejs from './tech/threejs.svg';
 import storybook from './tech/storybook.png';
 
+import heronlist from './heronlist.png';
+import esport from './esport.png';
+import tropheus from './tropheus.png';
 import carrent from './carrent.png';
 import jobit from './jobit.png';
 import tripguide from './tripguide.png';
@@ -52,4 +55,7 @@ export {
   jobit,
   tripguide,
   storybook,
+  heronlist,
+  esport,
+  tropheus,
 };

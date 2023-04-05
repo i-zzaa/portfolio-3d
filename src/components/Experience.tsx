@@ -10,10 +10,9 @@ import { ExperiencesType } from '../types/contants';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { getDocs, collection, orderBy } from 'firebase/firestore';
-import {useFirebaseContext} from '../context/firebase';
+import { useFirebaseContext } from '../context/firebase';
 import { formatDateMonthYear } from '../util/date';
-import { ref, getDownloadURL } from "firebase/storage";
-
+import { ref, getDownloadURL } from 'firebase/storage';
 
 const ExperienceCard = ({ experience }: { experience: ExperiencesType }) => {
   return (
@@ -57,37 +56,42 @@ const ExperienceCard = ({ experience }: { experience: ExperiencesType }) => {
 };
 
 const Experience = () => {
-  const { db, storage  } = useFirebaseContext()
-  const [experiences, setexperiences] = useState([] as ExperiencesType[] )
+  const { db, storage } = useFirebaseContext();
+  const [experiences, setexperiences] = useState([] as ExperiencesType[]);
 
-  const getDate = useCallback( async() => {
-    const querySnapshot = await getDocs(collection(db, "experiences"));
-    const docs: ExperiencesType[]= []
+  const getDate = useCallback(async () => {
+    const querySnapshot = await getDocs(collection(db, 'experiences'));
+    const docs: ExperiencesType[] = [];
 
     querySnapshot.forEach((doc: any) => {
       const imageRef = ref(storage, doc.data().icon);
-      getDownloadURL(imageRef).then((url: string) => {
-        docs.push({
-          company_name: doc.data().company_name ,
-          date: `${formatDateMonthYear(doc.data().dateInit)} - ${formatDateMonthYear(doc.data().dateFinish)}` , 
-          dateInit: doc.data().dateInit , 
-          icon:  url, 
-          iconBg: doc.data().iconBg , 
-          points: doc.data().points , 
-          title: doc.data().title 
+      getDownloadURL(imageRef)
+        .then((url: string) => {
+          docs.push({
+            company_name: doc.data().company_name,
+            date: `${formatDateMonthYear(doc.data().dateInit)} - ${formatDateMonthYear(
+              doc.data().dateFinish,
+            )}`,
+            dateInit: doc.data().dateInit,
+            icon: url,
+            iconBg: doc.data().iconBg,
+            points: doc.data().points,
+            title: doc.data().title,
+          });
+          setexperiences(docs);
         })
-        setexperiences(docs)
+        .catch((error) => {
+          console.error('Ocorreu um erro ao obter a URL da imagem:', error);
+        })
+        .finally(() => {
+          setexperiences(docs);
+        });
+    });
+  }, []);
 
-        
-      }).catch((error) => {
-        console.error("Ocorreu um erro ao obter a URL da imagem:", error);
-      });
-      });
-  }, [])
-
-  useEffect(()=> {
-    getDate()
-  }, [])
+  useEffect(() => {
+    getDate();
+  }, []);
 
   return (
     <>
@@ -107,4 +111,4 @@ const Experience = () => {
   );
 };
 
-export default SectionWrapper(Experience, 'experiences')
+export default SectionWrapper(Experience, 'experiences');
